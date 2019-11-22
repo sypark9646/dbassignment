@@ -1,60 +1,18 @@
-<html>
-<head>
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        li {
-            float: left;
-        }
-
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-                /* Change the link color to #111 (black) on hover */
-                li a:hover {
-                    background-color: #111;
-                }
-
-        .active {
-            background-color: #4CAF50;
-        }
-    </style>
-</head>
-<body>
-    <ul>
-        <li><a href="board.php">BOARD</a></li>
-        <li><a href="recipe.php">RECIPE</a></li>
-        <li><a href="exercise.php">EXERCISE</a></li>
-        <li><a href="mypage.php">MYPAGE</a></li>
-        <li style="float:right"><a class="active" href="logout.php">logout</a></li>
-    </ul>
-</body>
-</html>
-
 <?php
-  $db = new mysqli('localhost', 'root', '', 'dbassignment');
-  if($db->connect_error) {
+
+include ('navigationbar.html');
+include 'db_connection.php';
+  if($mysqli->connect_error) {
     die('데이터베이스 연결에 문제가 있습니다.\n관리자에게 문의 바랍니다.');
   }
-  $db->set_charset('utf8');
+  $mysqli->set_charset('utf8');
   $b_id = $_GET['b_id'];
 
   $sql = 'UPDATE boarddb set b_views = b_views + 1 where b_id = ' . $b_id;
-  $result = $db->query($sql); 
+  $result = $mysqli->query($sql); 
 
   $sql = 'select b_title, b_content, b_date, b_views, u_id, b_id from boarddb where b_id = ' . $b_id;
-  $result = $db->query($sql);
+  $result = $mysqli->query($sql);
   $row = $result->fetch_assoc();
             $datetime = explode(' ', $row['b_date']);
             $date = $datetime[0];
