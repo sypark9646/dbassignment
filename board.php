@@ -1,9 +1,6 @@
 <?php
-  $db = new mysqli('localhost', 'root', '', 'dbassignment');
-  if($db->connect_error) {
-    die('데이터베이스 연결에 문제가 있습니다.\n관리자에게 문의 바랍니다.');
-  }
-  $db->set_charset('utf8');
+  include 'db_connection.php';
+  $mysqli ->set_charset('utf8');
 ?>
 <html>
 <head>
@@ -81,7 +78,7 @@
       <tbody>
         <?php
           $sql = 'select * from boarddb order by b_id desc';
-          $result = $db->query($sql);
+          $result = $mysqli ->query($sql);
           while($row = $result->fetch_assoc())
           {
             $datetime = explode(' ', $row['b_date']);

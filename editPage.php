@@ -1,13 +1,11 @@
 <?php
-  $db = new mysqli('localhost', 'root', '', 'dbassignment');
-  if($db->connect_error) {
-    die('데이터베이스 연결에 문제가 있습니다.\n관리자에게 문의 바랍니다.');
-  }
-  $db->set_charset('utf8');
+  
+  include 'db_connection.php';
+  $mysqli->set_charset('utf8');
   $b_id = $_GET['b_id'];
 
   $sql = "select b_title, b_content from boarddb where b_id = ".$b_id;
-  $result = $db->query($sql);
+  $result = $mysqli->query($sql);
   $row = $result->fetch_assoc();
 ?>
 
