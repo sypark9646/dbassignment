@@ -11,7 +11,7 @@ include 'db_connection.php';
             if($row['u_pwd']==$pwd){
                 $_SESSION['userid']=$id;
                 if(isset($_SESSION['userid'])){
-                    header('Location: ./mypage.html');
+                    header('Location: ./mypage.php');
                 }//if
 	else{
 	        echo "세션 저장 실패";
