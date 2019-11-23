@@ -11,15 +11,6 @@
             border: 3px solid #f1f1f1;
         }
 
-        input[type=text], input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
         button {
             background-color: #1B823F;
             color: white;
@@ -34,19 +25,21 @@
                 opacity: 0.8;
       }
       </style>
-
+</html>
 <?php
 session_start();
 $id=$_SESSION['userid'];
 include 'db_connection.php';
 $weight=$_POST['weight'];
-$date=date('Y/m/d-H:i'); 
-$signup2=mysqli_query($mysqli,"INSERT INTO userinfodb(u_id, u_date, u_weight, u_calSum) VALUES ('$id', '$date', '$weight', 0)");
+$date=date('Y/m/d');
+
+$sql="INSERT INTO userinfodb(u_id, u_date, u_weight, u_calSum) VALUES ('$id', '$date', '$weight', 0) ON DUPLICATE KEY UPDATE u_weight = '$weight'";
+$signup2=mysqli_query($mysqli,$sql);
 if($signup2){
-	echo "<center><h2>업데이트 성공!</h2></center><br>";
+	echo "<center><h2>Update success!</h2></center><br>";
+}
+else{
+	echo "<center><h2>Failed!</h2></center><br>";
 }
 ?>
-
-<center><button onclick="location.href='./mypage.php'">GO to mypage</button></center>
-?>
-</html>
+<center><button onclick="location.href='./mypage.php'">GO to mypage</button></center>:

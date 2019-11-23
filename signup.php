@@ -40,7 +40,7 @@ $id=$_POST['id'];
 $pwd=$_POST['pwd'];
 $weight=$_POST['weight'];
 $height=$_POST['height'];
-$date=date('Y/m/d-H:i'); 
+$date=date('Y/m/d'); 
 include 'db_connection.php';
 
 $sql = "SELECT * from userdb WHERE u_id='$id'";

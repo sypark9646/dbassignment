@@ -3,8 +3,8 @@
 <body >
 <?php
 require "db_connection.php";// Database connection
-
-if($stmt = $mysqli->query("SELECT u_date, u_weight, u_calSum FROM userinfodb")){
+$id=$_SESSION[userid];
+if($stmt = $mysqli->query("SELECT u_date, u_weight, u_calSum FROM userinfodb WHERE u_id='$id'")){
 echo "No of records : ".$stmt->num_rows."<br>";
 $php_data_array = Array(); // create PHP array
   echo "<table>
