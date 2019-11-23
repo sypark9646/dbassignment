@@ -4,21 +4,19 @@
 <?php
 require "db_connection.php";// Database connection
 
-if($stmt = $mysqli->query("SELECT u_weight, u_date FROM userinfodb")){
+if($stmt = $mysqli->query("SELECT u_date, u_weight, u_calSum FROM userinfodb")){
 echo "No of records : ".$stmt->num_rows."<br>";
 $php_data_array = Array(); // create PHP array
   echo "<table>
-<tr> <th>Month</th><th>Sale</th><th>Profit</th><th>Expanses</th><th>Exp Fxd</th><th>Exp Vrv</th></tr>";
+<tr> <th>Days</th><th>Weight</th><th>Calorie</th></tr>";
 while ($row = $stmt->fetch_row()) {
-   echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td><td>$row[5]</td></tr>";
+   echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
    $php_data_array[] = $row; // Adding to array
    }
 echo "</table>";
 }else{
 echo $mysqli->error;
 }
-//print_r( $php_data_array);
-// You can display the json_encode output here. 
 echo json_encode($php_data_array); 
 
 // Transfor PHP array to JavaScript two dimensional array 
@@ -27,10 +25,8 @@ echo "<script>
 </script>";
 ?>
 
-
 <div id="curve_chart"></div>
 <br><br>
-<a href=https://www.plus2net.com/php_tutorial/chart-line-database.php>Column Chart from MySQL database</a>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -43,16 +39,13 @@ echo "<script>
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Month');
-        data.addColumn('number', 'Sale');
-		data.addColumn('number', 'Profit');
-		data.addColumn('number', 'Expanses');
-		data.addColumn('number', 'Exp_fixed');
-		data.addColumn('number', 'Exp_var');
+        data.addColumn('string', 'Days');
+        data.addColumn('number', 'Weight');
+        data.addColumn('number', 'Calorie');
         for(i = 0; i < my_2d.length; i++)
-    data.addRow([my_2d[i][0], parseInt(my_2d[i][1]),parseInt(my_2d[i][2]),parseInt(my_2d[i][3]),parseInt(my_2d[i][4]),parseInt(my_2d[i][5])]);
+    data.addRow([my_2d[i][0], parseInt(my_2d[i][1]),parseInt(my_2d[i][2])]);
        var options = {
-          title: 'plus2net.com Sale Profit',
+          title: 'Weight & Calorie per Day',
         curveType: 'function',
 		width: 800,
         height: 500,
@@ -62,7 +55,7 @@ echo "<script>
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
         chart.draw(data, options);
        }
-	///////////////////////////////
+
 </script>
 </body></html>
 

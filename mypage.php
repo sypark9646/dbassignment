@@ -12,10 +12,11 @@ button {
             background-color: #1B823F;
             color: white;
             padding: 14px 20px;
-            margin: 8px 0;
+            margin: 15px;
             border: none;
             cursor: pointer;
             width: 150px;
+            border-radius: 20px;
         }
 
             button:hover {
