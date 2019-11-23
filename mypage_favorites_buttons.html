@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            display: inline-block;
+            border-radius: 20px;
+            background-color: #333;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 50px;
+        }
+
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+
+                .button span:after {
+                    content: '\00bb';
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    right: -20px;
+                    transition: 0.5s;
+                }
+
+            .button:hover span {
+                padding-right: 25px;
+            }
+
+                .button:hover span:after {
+                    opacity: 1;
+                    right: 0;
+                }
+    </style>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+<center>
+    <button class="button" style="vertical-align:middle"><a href="favorite_recipe.html" style="color: #f1f1f1"><span>SHOW<br> My Favorite Recipe!<br><i class='fas fa-pizza-slice'></i></span></button>
+    <button class="button" style="vertical-align:middle"><a href="favorite_exercise.html" style="color: #f1f1f1"><span>SHOW<br> My Favorite Exercise!<br><i class='fas fa-basketball-ball'></i></span></button>
+</center>
+</body>
+</html>

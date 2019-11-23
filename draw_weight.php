@@ -1,12 +1,11 @@
 <!doctype html public "-//w3c//dtd html 3.2//en">
 <html>
 <body >
-<?Pphp
+<?php
 require "db_connection.php";// Database connection
 
 if($stmt = $mysqli->query("SELECT u_weight, u_date FROM userinfodb")){
-
-  echo "No of records : ".$stmt->num_rows."<br>";
+echo "No of records : ".$stmt->num_rows."<br>";
 $php_data_array = Array(); // create PHP array
   echo "<table>
 <tr> <th>Month</th><th>Sale</th><th>Profit</th><th>Expanses</th><th>Exp Fxd</th><th>Exp Vrv</th></tr>";
