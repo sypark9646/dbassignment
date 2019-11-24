@@ -38,7 +38,7 @@
         <tr>
           <td class="num"><?php echo $row['e_id']?></td>
           <td class="title">
-		<a href="./viewPage.php?b_id=<?php echo $row['d_id']?>"><?php echo $row['e_name']?></td>
+		<a href="./exerciseDetail.php?e_id=<?php echo $row['e_id']?>"><?php echo $row['e_name']?></td>
           <td class="calorie"><?php echo $row['e_cal']?></td>
           <td class="hit"><?php echo $row['e_up']?></td>
         </tr>
