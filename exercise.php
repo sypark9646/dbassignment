@@ -19,18 +19,38 @@
 <article class="boardArticle">
   <h2 align=center>Exercise</h2>
   <div id="boardList">
+    <div align=right>
+      <form action="exercise.php" method="post">
+        <input type="text" id="search" placeholder="Enter the search word" name="search" required>
+        <button type="submit" class="btn btn-default">search</button>
+      </form>
+    </div>
     <table>
       <thead>
         <tr>
-          <th scope="col" class="no">num</th>
+          <th scope="col" class="no">
+            <a href="./exercise.php?order_by=e_id">num</th>
           <th scope="col" class="title">name</th>
-          <th scope="col" class="calorie">cal</th>
-          <th scope="col" class="hit">like</th>
+          <th scope="col" class="calorie">
+            <a href="./exercise.php?order_by=e_cal">cal</th>
+          <th scope="col" class="hit">
+            <a href="./exercise.php?order_by=e_up">like</th>
         </tr>
       </thead>
       <tbody>
         <?php
-          $sql = 'select * from exercisedb order by e_id';
+          if(isset($_GET['order_by'])) $order_by=$_GET['order_by'];
+          else $order_by='e_id';
+          if($order_by == 'e_id') $order='ASC';
+          else $order='DESC';
+
+          if(isset($_POST['search'])){
+            $search=$_POST['search'];
+            $sql = "select * from exercisedb where upper(e_name) like upper('%$search%') order by $order_by $order";
+          }
+          else{
+            $sql = "select * from exercisedb order by $order_by $order";
+          }
           $result = $mysqli->query($sql);
           while($row = $result->fetch_assoc())
           {
