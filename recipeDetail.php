@@ -28,12 +28,14 @@
 <div align=center>
 <div id="board_read">
 	<article class="boardArticle">
+	
 	<h2><?php echo $row['d_name'];?></h2>
 	<div id="user_info">
 		like: <?php echo $row['d_up'];?>
 		<div id="bo_line"></div>
 	</div>
-	<div> <img src="<?php echo $row['e_uri'];?>"> </div>
+
+	<div> <img src="<?php echo $row['d_uri'];?>"/> </div>
 	<div id="bo_content">
 		<?php echo $row['d_txt'];?>
 	</div>
