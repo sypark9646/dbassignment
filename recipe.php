@@ -38,7 +38,7 @@ include 'db_connection.php';
         <tr>
           <td class="num"><?php echo $row['d_id']?></td>
           <td class="title">
-		<a href="./viewPage.php?b_id=<?php echo $row['d_id']?>"><?php echo $row['d_name']?></td>
+		<a href="./recipeDetail.php?d_id=<?php echo $row['d_id']?>"><?php echo $row['d_name']?></td>
           <td class="calorie"><?php echo $row['d_cal']?></td>
           <td class="hit"><?php echo $row['d_up']?></td>
         </tr>
