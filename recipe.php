@@ -19,18 +19,38 @@ include 'db_connection.php';
 <article class="boardArticle">
   <h2 align=center>Recipe</h2>
   <div id="boardList">
+    <div align=right>
+      <form action="recipe.php" method="post">
+        <input type="text" id="search" placeholder="Enter the search word" name="search" required>
+        <button type="submit" class="btn btn-default">search</button>
+      </form>
+    </div>
     <table>
       <thead>
         <tr>
-          <th scope="col" class="no">num</th>
+          <th scope="col" class="no">
+            <a href="./recipe.php?order_by=d_id">num</th>
           <th scope="col" class="title">name</th>
-          <th scope="col" class="calorie">cal</th>
-          <th scope="col" class="hit">like</th>
+          <th scope="col" class="calorie">
+            <a href="./recipe.php?order_by=d_cal">cal</th>
+          <th scope="col" class="hit">
+            <a href="./recipe.php?order_by=d_up">like</th>
         </tr>
       </thead>
       <tbody>
         <?php
-          $sql = 'select * from dietdb order by d_id';
+          if(isset($_GET['order_by'])) $order_by=$_GET['order_by'];
+          else $order_by='d_id';
+          if($order_by == 'd_up') $order='DESC';
+          else $order='ASC';
+
+          if(isset($_POST['search'])){
+            $search=$_POST['search'];
+            $sql = "select * from dietdb where upper(d_name) like upper('%$search%') order by $order_by $order";
+          }
+          else{
+            $sql = "select * from dietdb order by $order_by $order";
+          }
           $result = $mysqli->query($sql);
           while($row = $result->fetch_assoc())
           {
