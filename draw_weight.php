@@ -7,13 +7,13 @@ $id=$_SESSION[userid];
 if($stmt = $mysqli->query("SELECT u_date, u_weight, u_calSum FROM userinfodb WHERE u_id='$id'")){
 echo "No of records : ".$stmt->num_rows."<br>";
 $php_data_array = Array(); // create PHP array
-  echo "<table>
+  echo "<center><table>
 <tr> <th>Days</th><th>Weight</th><th>Calorie</th></tr>";
 while ($row = $stmt->fetch_row()) {
    echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
    $php_data_array[] = $row; // Adding to array
    }
-echo "</table>";
+echo "</table></center>";
 }else{
 echo $mysqli->error;
 }
@@ -25,7 +25,7 @@ echo "<script>
 </script>";
 ?>
 
-<div id="curve_chart"></div>
+<center><div id="curve_chart"></div></center>
 <br><br>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
