@@ -32,7 +32,7 @@ include 'db_connection.php';
       </thead>
       <tbody>
         <?php
-          $sql = "select d_id, d_name, d_cal, d_up from dietdb as A Right JOIN (SELECT * from userfavoritesdb where u_id='".$id."' and u_category=0) as B on A.d_id=B.u_favorite_id";
+          $sql = "select d_id, d_name, d_cal, d_up from dietdb as A Right JOIN (SELECT * from userfavoritesdb where u_id='".$id."' and u_category=1) as B on A.d_id=B.u_favorite_id";
           $result = $mysqli->query($sql);
           while($row = $result->fetch_assoc())
           {
