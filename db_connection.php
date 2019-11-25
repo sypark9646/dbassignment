@@ -1,6 +1,6 @@
 <?php
 	
-    $mysqli = new mysqli("localhost", 'root', '', 'dbassignment');
+    $mysqli = new mysqli("localhost", 'root', '', 'team12');
 
 
 
