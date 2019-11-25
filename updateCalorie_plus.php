@@ -9,21 +9,32 @@ $id=$_SESSION['userid'];
   $date=date('Y/m/d');
 
 /*이부분 transaction*/
-  $sqlzero="INSERT INTO usercaldb(u_num, u_id, u_category, u_cal) VALUES (NULL, '$u_id', 1, '$d_cal')";
-  $result = $mysqli->query($sqlzero);
+try{
+  $mysqli->autocommit(FALSE);
+  $transactionres=$mysqli->query("INSERT INTO usercaldb(u_num, u_id, u_category, u_cal) VALUES (NULL, '$u_id', 1, '$d_cal')");
+  if(!$transactionres){
+    $transactionres->free();
+    throw new Exception($mysqli->error);
+  }
 
   $sqlone="SELECT u_weight from userinfodb where u_id='".$id."' order by u_date desc limit 1";
   $result = $mysqli->query($sqlone);
   $row = $result->fetch_assoc();
   $weight=$row['u_weight'];
-  $sql="INSERT INTO userinfodb(u_id, u_date, u_weight, u_calSum) VALUES ('$id', '$date', '$weight', '$d_cal') ON DUPLICATE KEY UPDATE u_calSum = u_calSum + '$d_cal'";
-  $signup2=mysqli_query($mysqli,$sql);
-  
-if ($signup2) {
-		echo "<center><h2>Like is completed!</h2></center><br>";
+  $transactionres=$mysqli->query("INSERT INTO userinfodb(u_id, u_date, u_weight, u_calSum) VALUES ('$id', '$date', '$weight', '$d_cal') ON DUPLICATE KEY UPDATE u_calSum = u_calSum + '$d_cal'");
+  if(!$transactionres){
+    $transactionres->free();
+    throw new Exception($mysqli->error);
+  }
+
+  $mysqli->commit();
+  $mysqli->autocommit(TRUE);
+
+  echo "<center><h2>Like is completed!</h2></center><br>";
                          header('Location: ./recipeDetail.php?d_id=' . $d_id.'');
-             }
-	else {
-		echo "<center><h2>Update Calorie has failed!</h2></center><br>";
-	}
+}catch(Exception $e){
+  $mysqli->rollback();
+  $mysqli->autocommit(TRUE);
+  echo "<center><h2>Update Calorie has failed!</h2></center><br>";
+}
 ?>
