@@ -32,3 +32,4 @@ $mysqli->autocommit(TRUE);
 echo "<center><h2>Like is failed!</h2></center><br>";
 }
 ?>
+

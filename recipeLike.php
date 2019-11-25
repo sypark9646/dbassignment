@@ -5,7 +5,8 @@
   $mysqli->set_charset('utf8');
   $d_id = $_GET['d_id'];
 
-
+  $id=$_SESSION['userid']
+  /*transaction*/
 try{
 $mysqli->autocommit(FALSE); // i.e., start transaction
 $transactionres=$mysqli->query( 'UPDATE dietdb set d_up = d_up + 1 where d_id = ' . $d_id);
@@ -31,3 +32,4 @@ $mysqli->autocommit(TRUE);
 echo "<center><h2>Like is failed!</h2></center><br>";
 }
 ?>
+
