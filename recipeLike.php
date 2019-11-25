@@ -15,7 +15,7 @@ $transactionres->free();
 throw new Exception($mysqli->error);
 }
 
-$transactionres=$mysqli->query("INSERT INTO userfavoritesdb(u_id, u_favorite_id, u_category) VALUES ('$id', '$d_id', 0)");
+$transactionres=$mysqli->query("INSERT INTO userfavoritesdb(u_id, u_favorite_id, u_category) VALUES ('$id', '$d_id', 0) ON DUPLICATE KEY UPDATE u_category = u_category");
 if(!$transactionres){
 $transactionres->free();
 throw new Exception($mysqli->error);
