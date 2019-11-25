@@ -1,4 +1,5 @@
 <?php
+/*jihyun Song*/
   session_start();
   $id=$_SESSION['userid'];
   include 'db_connection.php';

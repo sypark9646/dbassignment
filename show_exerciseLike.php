@@ -33,7 +33,7 @@ include('navigationbar.html');
       </thead>
       <tbody>
         <?php
-          
+          /*soyeon Park*/
           $sql = "select e_id, e_name, e_cal, e_up from exercisedb as A Right JOIN (SELECT * from userfavoritesdb where u_id='".$id."' and u_category=0) as B on A.e_id=B.u_favorite_id";
           $result = $mysqli->query($sql);
           while($row = $result->fetch_assoc())

@@ -36,6 +36,7 @@
       </style>
 
 <?php
+/*Soyeon Park*/
 $id=$_POST['id'];
 $pwd=$_POST['pwd'];
 $weight=$_POST['weight'];

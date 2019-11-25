@@ -27,6 +27,7 @@
       </style>
 </html>
 <?php
+/*Soyeon Park*/
 session_start();
 $id=$_SESSION['userid'];
 include 'db_connection.php';

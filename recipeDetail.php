@@ -1,4 +1,5 @@
 <?php
+/*jihyun Song*/
   include 'db_connection.php';
   include('navigationbar.html');
 
@@ -40,6 +41,7 @@
 		<?php echo $row['d_txt'];?>
 	</div>
 	<button type="back" class="btn btn-default" style="float: left;" onclick="location.href='recipe.php'">back</button>
+	<!--Soyeon Park-->
 	<button type="plus_calorie" class="btn btn-default" style="float: right;" onclick="location.href='updateCalorie_plus.php?d_id=<?php echo $row['d_id']?>&d_cal=<?php echo $row['d_cal']?>'">eat</button>
 	<button type="like" class="btn btn-default" style="float: right;" onclick="location.href='recipeLike.php?d_id=<?php echo $row['d_id']?>'">like</button>
 	</article>

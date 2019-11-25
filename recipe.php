@@ -1,4 +1,5 @@
 <?php
+/*Jihyun Song*/
 include('navigationbar.html');
 include 'db_connection.php';
 ?>

@@ -1,4 +1,5 @@
-<?php
+﻿<?php
+/*Soyeon Park*/
 session_start();
 $id=$_SESSION['userid'];
   include 'db_connection.php';
@@ -8,7 +9,7 @@ $id=$_SESSION['userid'];
   $d_cal= $_GET['d_cal'];
   $date=date('Y/m/d');
 
-/*이부분 transaction*/
+/*이부분 transaction Jihyun Song*/
 try{
   $mysqli->autocommit(FALSE);
   $transactionres=$mysqli->query("INSERT INTO usercaldb(u_num, u_id, u_category, u_cal) VALUES (NULL, '$u_id', 1, '$d_cal')");
