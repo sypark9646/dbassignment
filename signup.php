@@ -39,7 +39,6 @@
 $id=$_POST['id'];
 $pwd=$_POST['pwd'];
 $weight=$_POST['weight'];
-$height=$_POST['height'];
 $date=date('Y/m/d'); 
 include 'db_connection.php';
 
@@ -55,7 +54,7 @@ if ($res) {
 	}   
 }
 /*transaction*/
-$signup=mysqli_query($mysqli,"INSERT INTO userdb(u_id, u_pwd, u_weight, u_height) VALUES ('$id', '$pwd', '$weight', '$height')");
+$signup=mysqli_query($mysqli,"INSERT INTO userdb(u_id, u_pwd, u_weight) VALUES ('$id', '$pwd', '$weight')");
 $signup2=mysqli_query($mysqli,"INSERT INTO userinfodb(u_id, u_date, u_weight, u_calSum) VALUES ('$id', '$date', '$weight', 0)");
 if($signup && $signup2){
 	echo "<center><h2>회원가입 성공!</h2></center><br>";
