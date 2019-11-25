@@ -3,11 +3,15 @@ session_start();
 $id=$_SESSION['userid'];
   include 'db_connection.php';
   $mysqli->set_charset('utf8');
+  $u_id = $_SESSION['userid'];
   $e_id = $_GET['e_id'];
   $e_cal= $_GET['e_cal'];
   $date=date('Y/m/d');
 
 /*이부분 transaction*/
+  $sqlzero="INSERT INTO usercaldb(u_num, u_id, u_category, u_cal) VALUES (NULL, '$u_id', 0, '$e_cal')";
+  $result = $mysqli->query($sqlzero);
+
   $sqlone="SELECT u_weight from userinfodb where u_id='".$id."' order by u_date desc limit 1";
   $result = $mysqli->query($sqlone);
   $row = $result->fetch_assoc();
