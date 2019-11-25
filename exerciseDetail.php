@@ -37,6 +37,7 @@
 		<?php echo $row['e_txt'];?>
 	</div>
 	<button type="back" class="btn btn-default" style="float: left;" onclick="location.href='exercise.php'">back</button>
+	<button type="minus_calorie" class="btn btn-default" style="float: right;" onclick="location.href='updateCalorie_minus.php?e_id=<?php echo $row['e_id']?>&e_cal=<?php echo $row['e_cal']?>'">exercise</button>
 	<button type="like" class="btn btn-default" style="float: right;" onclick="location.href='exerciseLike.php?e_id=<?php echo $row['e_id']?>'">like</button>
 	</article>
 </div>

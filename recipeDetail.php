@@ -14,7 +14,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Exercise</title>
+	<title>Recipe</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css" />
 	<link rel="stylesheet" href="./css/normalize.css" />
 	<link rel="stylesheet" href="./css/board.css" />
@@ -40,6 +40,7 @@
 		<?php echo $row['d_txt'];?>
 	</div>
 	<button type="back" class="btn btn-default" style="float: left;" onclick="location.href='recipe.php'">back</button>
+	<button type="plus_calorie" class="btn btn-default" style="float: right;" onclick="location.href='updateCalorie_plus.php?d_id=<?php echo $row['d_id']?>&d_cal=<?php echo $row['d_cal']?>'">eat</button>
 	<button type="like" class="btn btn-default" style="float: right;" onclick="location.href='recipeLike.php?d_id=<?php echo $row['d_id']?>'">like</button>
 	</article>
 </div>
