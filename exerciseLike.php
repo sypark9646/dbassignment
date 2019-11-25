@@ -5,10 +5,10 @@
   $e_id = $_GET['e_id'];
   $id=$_SESSION['userid'];
 
-  /*transaction �ʿ�*/
+  /*transaction ÇÊ¿ä*/
   $sql = 'UPDATE exercisedb set e_up = e_up + 1 where e_id = ' . $e_id;
   $res = $mysqli->query($sql);
-  $signup2=mysqli_query($mysqli,"INSERT INTO userfavoritesdb(u_id, u_favorite_id, u_category) VALUES ('$id', '$e_id', 1)");
+  $signup2=mysqli_query($mysqli,"INSERT INTO userfavoritesdb(u_id, u_favorite_id, u_category) VALUES ('$id', '$e_id', 1) ON DUPLICATE KEY UPDATE u_category = u_category");
   if ($res) {
 		echo "<center><h2>Like is completed!</h2></center><br>";
                          header('Location: ./exerciseDetail.php?e_id=' . $e_id.'');
