@@ -5,7 +5,7 @@
   $mysqli->set_charset('utf8');
   $d_id = $_GET['d_id'];
 
-  $id=$_SESSION['userid']
+  $id=$_SESSION['userid'];
   /*transaction*/
 try{
 $mysqli->autocommit(FALSE); // i.e., start transaction
